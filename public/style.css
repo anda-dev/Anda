@@ -9,6 +9,17 @@
 	font-size: 24px;
 	padding: 20px 0 20px 0;
 }
+.logout-form {
+	text-align: right;
+	color: #4d324d;
+	font-size: 12px;
+	padding: 20px 0 20px 0;
+}
+.actions-form input[type="submit"] {
+  text-align: left;
+	box-sizing: border-box;
+	padding: 15px;
+}
 .login-form input[type="password"],
 .login-form input[type="text"] {
 	width: 100%;
