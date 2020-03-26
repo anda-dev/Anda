@@ -6,7 +6,9 @@
     "start": "index.js"
   },
   "dependencies": {
+    "body-parser": "latest",
     "express": "latest",
-    "body-parser": "latest"
+    "express-session": "^1.17.0",
+    "pg": "^7.18.2"
   }
 }
