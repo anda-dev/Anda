@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 var session = require('express-session');
 var pg = require('pg');
@@ -60,7 +62,7 @@ app.post('/actions', function(request, response) {
   } else if (request.body.edituser) {
     response.sendFile(path.join(__dirname + '/public/edituser.html'));
   } else if (request.body.showusers) {
-    response.sendFile(path.join(__dirname + '/public/showuser.html'));
+    response.sendFile(path.join(__dirname + '/public/showusers.html'));
   }
 });
 
@@ -73,4 +75,4 @@ app.post('/logout', function(request, response) {
   }
 });
 
-app.listen(3000, () => console.log('server started'));
+app.listen(8080, () => console.log('server started'));

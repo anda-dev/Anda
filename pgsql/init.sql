@@ -11,12 +11,12 @@ CREATE TABLE "Party" (
 
 
 CREATE TABLE "Address" (
-	"id" serial(255) NOT NULL,
-	"partyid" serial(255) NOT NULL,
+	"id" serial NOT NULL,
+	"partyid" serial NOT NULL,
 	"country" varchar(255) NOT NULL,
 	"city" varchar(255) NOT NULL,
 	"street" varchar(255) NOT NULL,
-	"no" int(255) NOT NULL,
+	"no" integer NOT NULL,
 	CONSTRAINT "Address_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -26,8 +26,8 @@ CREATE TABLE "Address" (
 
 CREATE TABLE "User" (
 	"id" serial NOT NULL,
-	"email" serial(255) NOT NULL UNIQUE,
-	"name" serial(255) NOT NULL UNIQUE,
+	"email" varchar(50) NOT NULL UNIQUE,
+	"name" varchar(20) NOT NULL UNIQUE,
 	"cnp" varchar(255) NOT NULL UNIQUE,
 	"address" varchar(255) NOT NULL,
 	"password" varchar(255) NOT NULL,

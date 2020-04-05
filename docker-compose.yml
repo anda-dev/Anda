@@ -1,0 +1,31 @@
+version: '3'
+services:
+    db:
+        build: pgsql
+        restart: always
+        env_file:
+            - .env
+        volumes:
+            - database-data:/var/lib/postgresql/data/
+        ports:
+            - 5432:5432
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: npm run start
+        volumes:
+            - .:/usr/app
+            - /usr/app/node_modules
+        ports:
+            - "49160:8080"
+        links:
+            - db
+        depends_on:
+            - db
+        environment:
+            NODE_ENV: dev
+            DATABASE_URL: postgres://anda@127.0.0.1:5432/party_management                  
+volumes:
+    database-data:
+        driver: local
