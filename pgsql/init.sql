@@ -1,6 +1,6 @@
 CREATE TABLE "Party" (
 	"id" serial NOT NULL,
-	"name" serial NOT NULL UNIQUE,
+	"name" varchar(255) NOT NULL UNIQUE,
 	"addressid" serial NOT NULL UNIQUE,
 	"super" BOOLEAN NOT NULL,
 	CONSTRAINT "Party_pk" PRIMARY KEY ("id")
@@ -12,7 +12,6 @@ CREATE TABLE "Party" (
 
 CREATE TABLE "Address" (
 	"id" serial NOT NULL,
-	"partyid" serial NOT NULL,
 	"country" varchar(255) NOT NULL,
 	"city" varchar(255) NOT NULL,
 	"street" varchar(255) NOT NULL,
@@ -42,7 +41,10 @@ CREATE TABLE "User" (
 
 ALTER TABLE "Party" ADD CONSTRAINT "Party_fk0" FOREIGN KEY ("addressid") REFERENCES "Address"("id");
 
-ALTER TABLE "Address" ADD CONSTRAINT "Address_fk0" FOREIGN KEY ("partyid") REFERENCES "Party"("id");
-
 ALTER TABLE "User" ADD CONSTRAINT "User_fk0" FOREIGN KEY ("partyid") REFERENCES "Party"("id");
 
+INSERT INTO "Address" VALUES (12345, 'Romania', 'Timisoara', 'Piata Operei', '1');
+
+INSERT INTO "Party" VALUES (11111, 'Initial Super Party', 12345, 'Y');
+
+INSERT INTO "User" VALUES (22222, 'anda.nacu@gmail.com', 'anda', '2890502473829', 'Sever Bocu', 'password', 11111, 'Y');
